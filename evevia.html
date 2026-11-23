@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evevia 轻量化观影 App · NAnami</title>
+<meta name="description" content="孙鑫宇的信息架构设计课程作品。从三种找片方式出发，将沉浸式探索和分类检索融合为观影原型。">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="evevia.css">
+</head>
+<body><header><a class="brand" href="index.html">NAnami<span>✳</span></a><nav aria-label="主导航"><a href="index.html#work">作品</a><a href="index.html#about">关于我</a></nav></header>
+<main><article>
+<div class="case-intro"><p>孙鑫宇 · 信息架构设计课程</p><h1>Evevia 轻量化观影 App</h1>
+<p>打开观影应用时，有人已经决定了要看什么，有人只是想随手挑一部。Evevia 为这两种找片方式各留了一个入口，设计目标是让用户在三步内从找片进入播放。</p></div>
+<div class="eve-cover" aria-hidden="true"><strong>Evevia<span>观影交互设计</span></strong><div class="eve-phones"><img src="assets/evevia/browse.png" alt=""><img src="assets/evevia/detail.png" alt=""><img src="assets/evevia/player.png" alt=""></div></div>
+<div class="eve-layout">
+<section><h2>从一次选片经历开始</h2><p>在课程访谈中，一位习惯周末观影的受访者会先翻分类榜单，再结合简介和评分决定是否播放。中途离开后，通常靠观看记录找到上次的位置。这条路径给页面排序提供了依据：发现页帮人选片，详情页支持判断，历史记录负责续看。</p></section>
+<section class="eve-explore"><div><h2>首页应该先给用户看什么？</h2>
+<p><strong>方案一 · 沉浸式探索</strong><br>一次呈现一张影片卡片，单手滑动即可继续发现下一部。</p>
+<p><strong>方案二 · 传统导航</strong><br>用底部导航和网格组织片库，让已有类型偏好的用户直接按分类查找。</p>
+<p><strong>方案三 · 社交互动</strong><br>把影评和讨论放在发现路径上，为依赖口碑的用户提供选片依据。</p>
+<p>最终原型采用方案一的滑动探索，也保留方案二的分类检索。想随意浏览时可以一直滑动，想看某一类影片时可以直接缩小范围。</p></div>
+<figure><a href="assets/evevia/paper.jpg"><img src="assets/evevia/paper.jpg" loading="lazy" alt="课程作业中的手绘纸原型"></a><figcaption>纸原型 · 页面布局探索</figcaption></figure></section>
+<section><h2>从内容分类到页面跳转</h2><p>树状图整理功能归属，任务图梳理用户操作，最后把每一步落到具体的原型页面。点击图像可查看原图。</p><div class="eve-diagrams"><figure><a href="assets/evevia/architecture.png"><img loading="lazy" src="assets/evevia/architecture.png" alt="查看信息架构树状图原图"></a><figcaption>信息架构树状图</figcaption></figure>
+<figure><a href="assets/evevia/task.png"><img loading="lazy" src="assets/evevia/task.png" alt="查看主要任务流程图原图"></a><figcaption>主要任务流程图</figcaption></figure>
+<figure><a href="assets/evevia/flow.png"><img loading="lazy" src="assets/evevia/flow.png" alt="查看原型页面跳转图原图"></a><figcaption>原型页面跳转图</figcaption></figure></div></section>
+<section><h2>观看原型演示</h2><p>跟随原型录屏查看实际的页面切换和操作反馈。</p><video controls playsinline preload="none" poster="assets/evevia/detail.png" aria-label="Evevia 可交互原型演示" src="assets/evevia/demo.mp4"></video></section>
+<a href="index.html#work">返回精选作品</a></div></article></main><footer>NAnami · UI / Interaction Design</footer></body></html>
