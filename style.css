@@ -90,16 +90,18 @@ body:has(article .type, .card:is(:focus-visible, :active) .type) { --project-tin
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
   ::view-transition-group(root) { animation-duration: 280ms; }
-  body::before { transition: --light-tint 360ms ease-out; }
-  @keyframes light-settle {
-    from { transform: translate(5%, -3%) rotate(-4deg); }
-    to { transform: none; }
+  body::before {
+    transition: --light-tint 360ms ease-out;
+    animation: light-drift 14s ease-in-out infinite alternate;
+  }
+  @keyframes light-drift {
+    from { transform: translate(-4%, 2%); }
+    to { transform: translate(4%, -3%); }
   }
   @keyframes rule-unfold {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
   }
-  body:has(.intro)::before { animation: light-settle 4.6s cubic-bezier(.22,.62,.28,1) backwards; }
   body:has(.intro) header nav { animation: caption-entrance 420ms ease-out backwards; }
   main > .intro h1 { animation-delay: 90ms; }
   main > .intro h1 + p { animation-delay: 170ms; }
