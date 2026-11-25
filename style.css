@@ -92,7 +92,7 @@ body:has(article .type, .card:is(:focus-visible, :active) .type) { --project-tin
   ::view-transition-group(root) { animation-duration: 280ms; }
   body::before {
     transition: --light-tint 360ms ease-out;
-    animation: light-drift 14s ease-in-out infinite alternate;
+    animation: light-drift 9s ease-in-out infinite alternate;
   }
   @keyframes light-drift {
     from { transform: translate(-4%, 2%); }
