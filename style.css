@@ -35,26 +35,27 @@ header nav a { white-space: nowrap; }
 .aurora-cover > div > b { font-size: clamp(min(3rem, 16vw), 6vw, 6rem); }
 
 /* Portfolio motion follows the visitor's system preference. */
-/* The masthead is the only decorative motion surface on the home page. */
-.intro {
-  position: relative;
+/* The home page shares one viewport-sized light field across its sections. */
+body:has(.intro) {
   isolation: isolate;
-  overflow: hidden;
+  background-color: #f5f6f9;
+}
+.intro {
   padding: clamp(42px, 7vw, 110px) clamp(18px, 4vw, 64px);
   margin-top: clamp(16px, 2vw, 32px);
-  background: #f3f4f8;
 }
-.intro::before {
+body:has(.intro)::before {
   content: "";
-  position: absolute;
+  position: fixed;
   z-index: -1;
-  inset: -18%;
+  inset: -10%;
   pointer-events: none;
   background:
     radial-gradient(ellipse at 87% 134%, transparent 0 43%, #edf5fa 44%, #aec9d5 47%, #ece8fa 52%, transparent 57%),
     radial-gradient(ellipse at 98% -40%, transparent 0 44%, #c8c5e7 49%, #fbfcff 55%, transparent 60%),
     linear-gradient(110deg, #f4f3f6 28%, #eaedf4 65%, #c7d5e3);
   mask-image: linear-gradient(100deg, transparent 5%, #0006 40%, black 72%);
+  opacity: .78;
 }
 .intro > p:last-child { max-inline-size: 36em; }
 #work > h2 {
@@ -79,7 +80,7 @@ header nav a { white-space: nowrap; }
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
   }
-  .intro::before { animation: light-settle 4.6s cubic-bezier(.22,.62,.28,1) backwards; }
+  body:has(.intro)::before { animation: light-settle 4.6s cubic-bezier(.22,.62,.28,1) backwards; }
   body:has(.intro) header nav { animation: caption-entrance 420ms ease-out backwards; }
   main > .intro h1 { animation-delay: 90ms; }
   main > .intro h1 + p { animation-delay: 170ms; }
