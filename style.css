@@ -35,8 +35,13 @@ header nav a { white-space: nowrap; }
 .aurora-cover > div > b { font-size: clamp(min(3rem, 16vw), 6vw, 6rem); }
 
 /* Portfolio motion follows the visitor's system preference. */
-/* The home page shares one viewport-sized light field across its sections. */
-body:has(.intro) {
+/* Keep the light field aligned across the project index and case studies. */
+@property --light-tint {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #aec9d5;
+}
+body {
   isolation: isolate;
   background-color: #f5f6f9;
 }
@@ -44,18 +49,29 @@ body:has(.intro) {
   padding: clamp(42px, 7vw, 110px) clamp(18px, 4vw, 64px);
   margin-top: clamp(16px, 2vw, 32px);
 }
-body:has(.intro)::before {
+body::before {
+  --light-tint: var(--project-tint, #aec9d5);
   content: "";
   position: fixed;
   z-index: -1;
   inset: -10%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 87% 134%, transparent 0 43%, #edf5fa 44%, #aec9d5 47%, #ece8fa 52%, transparent 57%),
+    radial-gradient(ellipse at 87% 134%, transparent 0 43%, #edf5fa 44%, var(--light-tint) 47%, #ece8fa 52%, transparent 57%),
     radial-gradient(ellipse at 98% -40%, transparent 0 44%, #c8c5e7 49%, #fbfcff 55%, transparent 60%),
     linear-gradient(110deg, #f4f3f6 28%, #eaedf4 65%, #c7d5e3);
   mask-image: linear-gradient(100deg, transparent 5%, #0006 40%, black 72%);
   opacity: .78;
+}
+body:has(article .eve-cover, .eve-feature:is(:focus-visible, :active)) { --project-tint: #80bdb5; }
+body:has(.aurora-case, .aurora-feature:is(:focus-visible, :active)) { --project-tint: #97b6f3; }
+body:has(article .campus, .card:is(:focus-visible, :active) .campus) { --project-tint: #aba9ea; }
+body:has(article .type, .card:is(:focus-visible, :active) .type) { --project-tint: #aecb99; }
+@media (hover: hover) and (pointer: fine) {
+  body:has(.eve-feature:hover) { --project-tint: #80bdb5; }
+  body:has(.aurora-feature:hover) { --project-tint: #97b6f3; }
+  body:has(.card:hover .campus) { --project-tint: #aba9ea; }
+  body:has(.card:hover .type) { --project-tint: #aecb99; }
 }
 .intro > p:last-child { max-inline-size: 36em; }
 #work > h2 {
@@ -72,6 +88,9 @@ body:has(.intro)::before {
   transform-origin: left;
 }
 @media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-group(root) { animation-duration: 280ms; }
+  body::before { transition: --light-tint 360ms ease-out; }
   @keyframes light-settle {
     from { transform: translate(5%, -3%) rotate(-4deg); }
     to { transform: none; }
